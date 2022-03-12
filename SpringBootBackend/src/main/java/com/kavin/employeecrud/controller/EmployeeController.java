@@ -4,12 +4,7 @@ import com.kavin.employeecrud.model.Employee;
 import com.kavin.employeecrud.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +34,20 @@ public class EmployeeController {
     public ResponseEntity<Employee> getDeviceById(@PathVariable("id") long id){
         return new ResponseEntity<Employee>(employeeService.getEmployeeById(id), HttpStatus.OK);
     }
+
+    //update an employee API
+    @PutMapping("{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
+        return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
+    }
+
+    //build delete employee by id REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id){
+        employeeService.deleteEmployee(id);
+        return new ResponseEntity<String>("Employee deleted successfully!", HttpStatus.OK);
+    }
+
 
 
 }
