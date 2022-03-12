@@ -1,7 +1,9 @@
+import ListEmployeeComponent from "./components/ListEmployeeComponent";
+
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <ListEmployeeComponent/>
     </div>
   );
 }
