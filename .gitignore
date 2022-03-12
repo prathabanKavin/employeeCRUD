@@ -1,5 +1,5 @@
 HELP.md
-SpringBootBackend/target/
+target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -14,10 +14,10 @@ SpringBootBackend/target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-SpringBootBackend/.idea
-SpringBootBackend/*.iws
-SpringBootBackend/*.iml
-SpringBootBackend/*.ipr
+.idea
+*.iws
+*.iml
+*.ipr
 
 ### NetBeans ###
 /nbproject/private/

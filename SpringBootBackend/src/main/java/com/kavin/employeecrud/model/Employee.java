@@ -24,6 +24,9 @@ public class Employee {
     @Column(name = "emailId", nullable = false)
     private String emailId;
 
+    public Employee() {
+    }
+
     public Employee(long id, String firstName, String lastName, String emailId) {
         this.id = id;
         this.firstName = firstName;
