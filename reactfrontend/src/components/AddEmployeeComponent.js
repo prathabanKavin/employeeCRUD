@@ -10,15 +10,25 @@ const AddEmployeeComponent = () => {
     const navigate = useNavigate();
     const {id} = useParams();
 
-    const saveEmployee = (e) => {
+    const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
         const employee = { firstName, lastName, emailId}
-        EmployeeService.createEmployee(employee).then((response) => {
-            console.log(response.data)
-            navigate('/employees')
-        }).catch(error =>{
-            console.log(error)
-        })
+
+        if(id){
+            EmployeeService.updateEmployee(id, employee).then((response) => {
+                console.log(response.data)
+                navigate('/employees')
+            }).catch(error =>{
+                console.log(error)
+            })
+        } else {
+            EmployeeService.createEmployee(employee).then((response) => {
+                console.log(response.data)
+                navigate('/employees')
+            }).catch(error =>{
+                console.log(error)
+            })
+        }
     }
 
     useEffect(() => {
@@ -91,7 +101,7 @@ const AddEmployeeComponent = () => {
                             </input>
                         </div>
 
-                        <button className='btn btn-success' onClick={(e) => saveEmployee(e)}>Add</button>
+                        <button className='btn btn-success' onClick={(e) => saveOrUpdateEmployee(e)}>Save</button>
                         <Link to='/employees' className='btn btn-danger'> Cancel </Link>
                     </form>
                 </div>
